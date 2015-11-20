@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+  <p>Ever wished that clearing a text field was easier than double-clicking and hitting delete? </p>
+  <p>With cutting-edge Clearbox™ technology, you're just one click away from a blank slate. It's that easy!</p>
+ 
   <textarea rows="4" cols="50" name="text"></textarea>
   <br>
   <button type="button" name="clear">Clear</button>
@@ -19,24 +22,38 @@
 	var cleared = "";
 	
 	clear.on( 'click', function() {
-		undo.prop('disabled', false);
+		textArea.focus();
+		cleared = textArea.val();
+		clear.prop('disabled', true);
 		textArea.animate({left: '30px', color: '#333'}, 50);
 		textArea.animate({left: '0px', right: '30px', color: '#666'}, 100);
 		textArea.animate({left: '30px', right: '0px', color: '#999'}, 100);
-		textArea.animate({left: '0px', right: '30px', color: '#ccc'}, 100);
+		textArea.animate({left: '0px', right: '30px', color: '#e5e5e5'}, 100);
 		textArea.animate({right: '0px', color: '#fff'}, 50, function() {	
-			cleared = textArea.val();
+			undo.prop('disabled', false);
 			textArea.val('');
 			textArea.css('color', '#000');
 		});
 	});
+	
 	undo.on( 'click', function() {
+		textArea.focus();
 		$(this).prop('disabled', true);
 		textArea.animate({'background-color': '#000'}, 100, function() {
 			textArea.val(cleared);
 			cleared = '';
+			clear.prop('disabled', false);
 		});
 		textArea.animate({'background-color': '#fff'}, 100);
+	});
+	
+	
+	textArea.on('keyup', function() {
+		if ($(this).val() === '') {
+			clear.prop('disabled', true);
+		} else {
+			clear.prop('disabled', false);
+		}
 	});
     </script>
   </body>

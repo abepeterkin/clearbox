@@ -5,6 +5,6 @@ body, html {
 }
 
 textarea {
+	position: relative;
    resize: none;
-   position: relative;
 }
