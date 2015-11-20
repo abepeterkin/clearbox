@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clearbox</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+  <textarea rows="4" cols="50" name="text"></textarea>
+  <br>
+  <button type="button" name="clear">Clear</button>
+  <button type="button" name="undo" disabled>Undo Clear</button>
+	<script src="jquery-2.1.4.js"></script>
+	<script src="jquery.color-2.1.0.js"></script>
+    <script>
+	var textArea = $("textarea[name=text]");
+	var clear = $("button[name=clear]");
+	var undo = $("button[name=undo]");
+	var cleared = "";
+	
+	clear.on( 'click', function() {
+		undo.prop('disabled', false);
+		textArea.animate({left: '30px', color: '#333'}, 50);
+		textArea.animate({left: '0px', right: '30px', color: '#666'}, 100);
+		textArea.animate({left: '30px', right: '0px', color: '#999'}, 100);
+		textArea.animate({left: '0px', right: '30px', color: '#ccc'}, 100);
+		textArea.animate({right: '0px', color: '#fff'}, 50, function() {	
+			cleared = textArea.val();
+			textArea.val('');
+			textArea.css('color', '#000');
+		});
+	});
+	undo.on( 'click', function() {
+		$(this).prop('disabled', true);
+		textArea.animate({'background-color': '#000'}, 100, function() {
+			textArea.val(cleared);
+			cleared = '';
+		});
+		textArea.animate({'background-color': '#fff'}, 100);
+	});
+    </script>
+  </body>
+</html>
