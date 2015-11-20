@@ -1,6 +1,6 @@
 $('#clearbox-widget').html("<textarea style=\"position:relative;resize:none;\" rows=\"4\" cols=\"50\" id=\"clearbox-text\"></textarea>"
 	+ '<br>'
-	+ '<button type=\"button\" id=\"clearbox-clear\">Clear</button>'
+	+ '<button type=\"button\" id=\"clearbox-clear\" disabled>Clear</button>'
 	+ '<button type=\"button\" id=\"clearbox-undo\" disabled>Undo Clear</button>');
 	
 var textArea = $("#clearbox-text");
