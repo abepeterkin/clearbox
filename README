@@ -1,0 +1,8 @@
+Link to demo: http://abepeterkin.github.io/clearbox/
+In most text boxes, the fastest way to delete all of the text inside is to double-click the box and then hit the delete key. I developed a text box with a button that conveniently clears the entire box of text, and another button that reverses the state of the box to how it was before the last clear. I also added some animations to make it more fun to use: the box shakes like an Etch A Sketch when it clears text, and fades to black and back to white when it undoes a clear. With this widget, the act of clearing text is reduced from three button presses to one. Plus, the animations add a real-world analogue to the act of clearing something: almost everyone is familiar with Etch A Sketch. 
+The widget is highly portable, and can easily be embedded onto any site. Just use this div:
+<div id="clearbox-widget"></div>
+And import these scripts, in this order:
+<script src="jquery-2.1.4.js"></script>
+<script src="jquery.color-2.1.0.js"></script>
+<script src="clearbox-widget.js"></script>
